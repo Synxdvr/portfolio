@@ -1,0 +1,203 @@
+---
+const skillGroups = [
+  {
+    label: 'Languages',
+    icon: '💻',
+    skills: ['Kotlin', 'Dart', 'TypeScript', 'JavaScript', 'Java', 'Python', 'C#', 'PHP', 'SQL'],
+  },
+  {
+    label: 'Frameworks & Libraries',
+    icon: '🌐',
+    skills: ['React', 'Electron', 'Flutter', 'Tailwind', 'Laravel', 'ASP.NET Core'],
+  },
+  {
+    label: 'Cloud & Tools',
+    icon: '☁️',
+    skills: ['Google Cloud Platform', 'Azure DevOps', 'Firebase', 'Git', 'GitHub', 'GitLab'],
+  },
+];
+---
+<section class="skills" id="skills">
+  <div class="container">
+    <div class="skills-header">
+      <p class="section-label">Tech stack</p>
+      <h2 class="section-title">Skills & Technologies</h2>
+      <p class="skills-sub">
+        Tools and technologies I use to bring ideas to life — from mobile to the web.
+      </p>
+    </div>
+    <div class="skills-grid">
+      {skillGroups.map((group) => (
+        <div class="skill-group">
+          <div class="skill-group-header">
+            <span class="skill-icon">{group.icon}</span>
+            <span class="skill-group-label">{group.label}</span>
+          </div>
+          <div class="skill-tags">
+            {group.skills.map((skill) => (
+              <span class="skill-tag">{skill}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {/*<div class="proficiency">
+      <p class="section-label" style="text-align:center; margin-bottom: 32px;">Proficiency</p>
+      <div class="prof-bars">
+        {[
+          { label: 'Android / Kotlin', level: 85 },
+          { label: 'Flutter / Dart', level: 75 },
+          { label: 'React Native', level: 70 },
+          { label: 'TypeScript / JavaScript', level: 72 },
+          { label: 'Firebase / GCP', level: 70 },
+          { label: 'Python', level: 60 },
+        ].map(item => (
+          <div class="prof-bar-row">
+            <div class="prof-bar-meta">
+              <span class="prof-label">{item.label}</span>
+              <span class="prof-pct">{item.level}%</span>
+            </div>
+            <div class="prof-track">
+              <div class="prof-fill" style={`width: ${item.level}%`}></div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>*/}
+  </div>
+</section>
+
+<style>
+.skills {
+  padding: 100px 0;
+  border-top: 1px solid var(--border);
+}
+
+.skills-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.skills-sub {
+  margin-top: 12px;
+  font-size: 16px;
+  color: var(--text3);
+  max-width: 460px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 72px;
+}
+
+.skill-group {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  transition: border-color var(--transition);
+}
+.skill-group:hover { border-color: var(--border2); }
+
+.skill-group-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.skill-icon { font-size: 20px; }
+
+.skill-group-label {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skill-tag {
+  padding: 4px 10px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 12px;
+  color: var(--text2);
+  transition: border-color var(--transition), color var(--transition);
+}
+.skill-tag:hover { border-color: var(--accent); color: var(--accent2); }
+
+/* Proficiency bars */
+.proficiency {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.prof-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.prof-bar-row { display: flex; flex-direction: column; gap: 6px; }
+
+.prof-bar-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.prof-label { font-size: 14px; color: var(--text2); }
+
+.prof-pct {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.prof-track {
+  height: 4px;
+  background: var(--bg3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.prof-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 2px;
+  width: 0%;
+  transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 600px) {
+  .skills-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<script>
+const fills = document.querySelectorAll('.prof-fill');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target as HTMLElement;
+      el.style.width = el.style.width;
+      observer.unobserve(el);
+    }
+  });
+}, { threshold: 0.2 });
+
+fills.forEach(fill => observer.observe(fill));
+</script>

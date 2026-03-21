@@ -1,0 +1,365 @@
+---
+const projects = [
+  {
+    id: 'filmhub',
+    title: 'Filmhub',
+    emoji: '🎬',
+    type: 'Android App',
+    badge: 'Internship Project',
+    badgeColor: 'green',
+    tagline: 'Modern Android popular movie listing app',
+    problem: 'Finding reliable info on currently popular movies meant juggling multiple sites. Saving favorites required internet access every time.',
+    solution: 'Built a native Android app with offline-first architecture using Room Database, real-time push notifications via Firebase, and a clean UI following modern Android best practices (MVVM, LiveData, Coroutines).',
+    impact: 'Presented to senior developers, tech leads, and HR at Stratpoint. Demonstrated production-level Android skills that contributed to a full-time hire.',
+    tags: ['Kotlin', 'Android', 'Firebase', 'MVVM', 'Room DB', 'XML'],
+    highlights: ['Dynamic listing', 'Push notifications', 'Favorites system', 'Modern Android (MVVM)', 'CLEAN architecture'],
+    github: 'https://github.com/synxdvr/filmhub',
+  },
+  {
+    id: 'ridesync',
+    title: 'RideSync',
+    emoji: '🗺️',
+    type: 'React Native App',
+    badge: 'Flagship Project',
+    badgeColor: 'accent',
+    tagline: 'Real-time group trip planner with live navigation',
+    problem: 'Group road trips are chaotic — companions lose each other, not everyone knows the route, and coordination happens in scattered chats.',
+    solution: 'Built a cross-platform group trip app with live GPS navigation, real-time location sharing, group chat, walkie-talkie, and a public trip discovery system for solo travelers.',
+    impact: 'Combines features of Google Maps, Life360, and Discord into one mobile experience — showcasing real-time systems, maps APIs, and cross-platform development.',
+    tags: ['React Native', 'Firebase', 'GCP', 'Tailwind', 'REST API', 'WebRTC'],
+    highlights: ['Live navigation (Google Maps)', 'Real-time location sharing', 'In-app walkie-talkie', 'Public trip discovery'],
+    github: 'https://github.com/yourusername/ridesync',
+  },
+  {
+    id: 'beyond-borders',
+    title: 'Beyond Borders',
+    emoji: '✈️',
+    type: 'Flutter App',
+    badge: 'Cross-platform',
+    badgeColor: 'blue',
+    tagline: 'AI-assisted travel planner & destination guide',
+    problem: 'Planning an international trip requires researching dozens of sources for places, seasons, reviews, and nearby attractions.',
+    solution: 'A Flutter travel planning app that recommends must-visit places by destination, suggests optimal months to visit, shows photos and reviews, and surfaces nearby locations. Users can save to a personal wishlist.',
+    impact: 'Demonstrates Flutter proficiency, GCP API integration, and thoughtful UX design for content-heavy applications.',
+    tags: ['Flutter', 'Dart', 'Firebase', 'GCP', 'Material UI'],
+    highlights: ['Destination recommendations', 'Best month to visit', 'Reviews & photos', 'Personal wishlist'],
+    github: 'https://github.com/yourusername/beyond-borders',
+  },
+  /*{
+    id: 'prioritrack',
+    title: 'PrioriTrack',
+    emoji: '📁',
+    type: 'Desktop App',
+    badge: 'Client Work ★',
+    badgeColor: 'accent',
+    tagline: 'Document management system built for a real client',
+    problem: 'A real client was managing confidential documents in Excel — no filtering, no deadline tracking, no alerts, and a steep learning curve.',
+    solution: 'Built a custom desktop document management app using Electron.js with full CRUD, advanced search and filtering, and automated deadline notifications for documents nearing due dates.',
+    impact: 'Delivered to a real client. Replaced a broken Excel workflow with a purpose-built desktop system — a real freelance win that demonstrates client-facing work.',
+    tags: ['Electron.js', 'TypeScript', 'MySQL', 'Tailwind', 'SCSS'],
+    highlights: ['Advanced filtering & search', 'Deadline notifications', 'Confidential document handling', 'Real client delivered'],
+    github: 'https://github.com/yourusername/prioritrack',
+  },*/
+  /*{
+    id: 'memoir',
+    title: 'Memoir',
+    emoji: '🎓',
+    type: 'Web App',
+    badge: 'Full-stack',
+    badgeColor: 'blue',
+    tagline: 'A Reddit-meets-Twitter community platform for UST students',
+    problem: 'UST students had no dedicated space to ask questions, share campus updates, or connect with peers across departments.',
+    solution: 'A full-stack web platform exclusive to UST students (verified via UST email), with post creation, commenting, profile customization, and a dynamic content feed.',
+    impact: 'Demonstrates full-stack web development and the ability to build community-driven platforms with authentication, access control, and social features.',
+    tags: ['ASP.NET Core', 'JavaScript', 'HTML', 'CSS', 'C#'],
+    highlights: ['UST email verification', 'Post & comment system', 'Twitter-style profiles', 'Campus news feed'],
+    github: 'https://github.com/yourusername/memoir',
+  },*/
+];
+---
+<section class="projects" id="projects">
+  <div class="container">
+    <div class="projects-header">
+      <p class="section-label">My work</p>
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="projects-sub">
+        From internship builds to real client delivery — here's what I've shipped.
+      </p>
+    </div>
+
+    <div class="projects-grid">
+      {projects.map((p, i) => (
+        <article class={`project-card ${i === 0 ? 'featured' : ''}`}>
+          <div class="project-top">
+            <div class="project-icon-wrap">
+              <span class="project-emoji">{p.emoji}</span>
+            </div>
+            <div class="project-meta">
+              <span class={`project-badge badge-${p.badgeColor}`}>{p.badge}</span>
+              <span class="project-type">{p.type}</span>
+            </div>
+          </div>
+
+          <h3 class="project-title">{p.title}</h3>
+          <p class="project-tagline">{p.tagline}</p>
+
+          <div class="project-breakdown">
+            <div class="breakdown-item">
+              <span class="breakdown-label">Problem</span>
+              <p class="breakdown-text">{p.problem}</p>
+            </div>
+            <div class="breakdown-item">
+              <span class="breakdown-label">Solution</span>
+              <p class="breakdown-text">{p.solution}</p>
+            </div>
+            <div class="breakdown-item">
+              <span class="breakdown-label">Impact</span>
+              <p class="breakdown-text impact">{p.impact}</p>
+            </div>
+          </div>
+
+          <div class="project-highlights">
+            {p.highlights.map(h => (
+              <span class="highlight-item">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <circle cx="5" cy="5" r="4" fill="currentColor" opacity="0.2"/>
+                  <circle cx="5" cy="5" r="2" fill="currentColor"/>
+                </svg>
+                {h}
+              </span>
+            ))}
+          </div>
+
+          <div class="project-tags">
+            {p.tags.map(t => <span class="skill-tag">{t}</span>)}
+          </div>
+
+          <div class="project-actions">
+            <a href={p.github} target="_blank" class="proj-link github">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              View Code
+            </a>
+            <span class="proj-link no-deploy">No live demo yet</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.projects {
+  padding: 100px 0;
+  border-top: 1px solid var(--border);
+}
+
+.projects-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.projects-sub {
+  margin-top: 12px;
+  font-size: 16px;
+  color: var(--text3);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.project-card:hover {
+  border-color: var(--border2);
+  transform: translateY(-2px);
+}
+
+.project-card.featured {
+  border-color: rgba(232,103,58,0.3);
+  background: linear-gradient(145deg, rgba(232,103,58,0.04) 0%, var(--bg2) 60%);
+}
+
+.project-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.project-icon-wrap {
+  width: 48px; height: 48px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-emoji { font-size: 22px; }
+
+.project-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.project-badge {
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+}
+
+.badge-accent {
+  background: var(--accent-dim);
+  border: 1px solid var(--accent);
+  color: var(--accent2);
+}
+
+.badge-green {
+  background: rgba(74,222,128,0.08);
+  border: 1px solid rgba(74,222,128,0.3);
+  color: var(--green);
+}
+
+.badge-blue {
+  background: rgba(96,165,250,0.08);
+  border: 1px solid rgba(96,165,250,0.3);
+  color: var(--blue);
+}
+
+.project-type {
+  font-size: 12px;
+  color: var(--text3);
+}
+
+.project-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.project-tagline {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.5;
+}
+
+/* Breakdown */
+.project-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.breakdown-item { display: flex; flex-direction: column; gap: 3px; }
+
+.breakdown-label {
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--font-display);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+
+.breakdown-text {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.6;
+}
+
+.breakdown-text.impact { color: var(--accent2); }
+
+/* Highlights */
+.project-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.highlight-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text2);
+  padding: 4px 10px;
+  background: var(--bg3);
+  border-radius: 100px;
+  border: 1px solid var(--border);
+}
+
+.highlight-item svg { color: var(--accent); flex-shrink: 0; }
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skill-tag {
+  padding: 4px 10px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 11px;
+  color: var(--text3);
+}
+
+/* Actions */
+.project-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.proj-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: opacity var(--transition);
+}
+
+.proj-link.github {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--text2);
+}
+.proj-link.github:hover { border-color: var(--text2); color: var(--text); }
+
+.proj-link.no-deploy {
+  font-size: 12px;
+  color: var(--text3);
+  font-style: italic;
+}
+
+@media (max-width: 960px) {
+  .projects-grid { grid-template-columns: 1fr; }
+}
+</style>
